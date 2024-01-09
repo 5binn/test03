@@ -1,0 +1,21 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container">
+    <div>
+        <h4>질문등록</h4>
+    </div>
+    <form th:object="${questionForm}" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+        <div class="mb-3">
+            <label for="title" class="form-label">제목</label>
+            <input th:field="*{title}" type="text" name="title" id="title" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">내용</label>
+            <textarea th:field="*{content}" name="content" id="content" class="form-control" cols="30" rows="10"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">등록</button>
+    </form>
+
+</div>
+</html>
